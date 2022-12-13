@@ -1,5 +1,6 @@
 ﻿using eticket.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace eticket.Controllers
 {
@@ -14,8 +15,8 @@ namespace eticket.Controllers
 
         public IActionResult Index()
         {
-            var allMovies = _context.Movies.ToList();
-            return View();
+            var allMovies = _context.Movies.Include(it => it.Cinema).OrderBy(it => it.Name).ToList();
+            return View(allMovies);
         }
     }
 }

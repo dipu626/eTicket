@@ -1,4 +1,5 @@
 using eticket.Data;
+using eticket.Data.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
@@ -11,6 +12,9 @@ Debug.Print(connectionString);
 
 // DBContext configuration
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
+
+// Service Configuration
+builder.Services.AddScoped<IActorsService, ActorsService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

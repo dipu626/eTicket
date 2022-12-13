@@ -11,22 +11,39 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">eticket</a>
+                <a class="navbar-brand" asp-area="" asp-controller=@eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.MoviesController)) asp-action="@nameof(eticket.Controllers.MoviesController.Index)">eticket</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <li class="navbar-nav">
+                            <a class="nav-link text-dark" asp-controller=@eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.MoviesController)) asp-action="@nameof(eticket.Controllers.MoviesController.Index)"><i class="badge-info bi-film"></i> Movies</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="bi bi-gear"></i> Management
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-controller=@eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.CinemasController)) asp-action="@nameof(eticket.Controllers.CinemasController.Index)"><i class="bi bi-camera-reels"></i></a>
+                                <a class="dropdown-item" asp-controller=@eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.ProducersController)) asp-action="@nameof(eticket.Controllers.ProducersController.Index)"><i class="bi bi-headset"></i></a>
+                                <a class="dropdown-item" asp-controller=@eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.ActorsController)) asp-action="@nameof(eticket.Controllers.ActorsController.Index)"><i class="bi bi-person-square"></i></a>
+                            </div>
+
                         </li>
+
                     </ul>
+
+                    <form class="form-check-inline my-2 my-lg-0" asp-controller=@eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.MoviesController)) asp-action="@nameof(eticket.Controllers.CinemasController.Filter)" style="display: -webkit-inline-box; padding-right: 25px;">
+                        <input name="searchString" type="text" class="form-control" placeholder="Search for a movie..." />
+                        <button class="btn btn-outline-light my-2 my-sm-0 m-1" type="submit"><i class="bi bi-search"></i></button>
+                    </form>
+
                 </div>
             </div>
         </nav>
@@ -39,7 +56,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - eticket - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2022 - eticket
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

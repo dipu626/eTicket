@@ -15,7 +15,12 @@ namespace eticket.Controllers
         public IActionResult Index()
         {
             var allCinemas = _context.Cinemas.ToList();
-            return View();
+            return View(allCinemas);
+        }
+
+        public void Filter()
+        {
+            throw new NotImplementedException();
         }
     }
 }
