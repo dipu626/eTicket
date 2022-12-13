@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Producer>
+
+@{
+    ViewData["Title"] = "List of Producers";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.ProfilePictureURL)</td>
+                    <td>@Html.DisplayNameFor(model => model.FullName)</td>
+                    <td>@Html.DisplayNameFor(model => model.Bio)</td>
+                    <td>Actions</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">
+                            <img class="rounded-circle" src="@item.ProfilePictureURL" alt="@item.FullName" style="max-width:150px" />
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.FullName)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Bio)
+                        </td>
+                        <td class="align-middle">
+                            <a class="btn btn-outline-primary">
+                                <i class="bi bi-pencil-square">
+                                    Edit
+                                </i>
+                            </a> |
+                            <a class="btn btn-outline-info">
+                                <i class="bi bi-eye">
+                                    Details
+                                </i>
+                            </a> |
+                            <a class="btn btn-danger text-white">
+                                <i class="bi bi-trash">
+                                    Delete
+                                </i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
