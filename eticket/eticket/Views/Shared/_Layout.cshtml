@@ -21,18 +21,40 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item active">
-                            <a class="nav-link text-dark" asp-area="" asp-controller=@eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.MoviesController)) asp-action="@nameof(eticket.Controllers.MoviesController.Index)"><i class="badge-info bi-film"></i> Movies</a>
+                            <a class="nav-link text-dark"
+                               asp-area="" asp-controller=@eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.MoviesController))
+                               asp-action="@nameof(eticket.Controllers.MoviesController.Index)">
+                                <i class="badge-info bi-film"></i>
+                                Movies
+                            </a>
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="bi bi-gear"></i> Management
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" asp-controller=@eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.CinemasController)) asp-action="@nameof(eticket.Controllers.CinemasController.Index)"><i class="bi bi-camera-reels"></i></a>
-                                <a class="dropdown-item" asp-controller=@eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.ProducersController)) asp-action="@nameof(eticket.Controllers.ProducersController.Index)"><i class="bi bi-headset"></i></a>
-                                <a class="dropdown-item" asp-controller=@eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.ActorsController)) asp-action="@nameof(eticket.Controllers.ActorsController.Index)"><i class="bi bi-person-square"></i></a>
+                                <a class="dropdown-item"
+                                   asp-controller=@eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.CinemasController))
+                                   asp-action="@nameof(eticket.Controllers.CinemasController.Index)">
+                                    <i class="bi bi-camera-reels"></i>
+                                    Cinemas
+                                </a>
+
+                                <a class="dropdown-item"
+                                   asp-controller=@eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.ProducersController))
+                                   asp-action="@nameof(eticket.Controllers.ProducersController.Index)">
+                                    <i class="bi bi-headset"></i>
+                                    Producers
+                                </a>
+
+                                <a class="dropdown-item"
+                                   asp-controller=@eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.ActorsController))
+                                   asp-action="@nameof(eticket.Controllers.ActorsController.Index)">
+                                    <i class="bi bi-person-square"></i>
+                                    Actors
+                                </a>
                             </div>
 
                         </li>
@@ -62,6 +84,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
