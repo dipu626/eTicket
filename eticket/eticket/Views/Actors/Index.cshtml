@@ -25,26 +25,33 @@
                             <img class="rounded-circle"
                                  src="@item.ProfilePictureURL"
                                  alt="@item.FullName"
-                                 style="max-width: 150px"></img>
+                                 style="max-width: 150px" />
                         </td>
                         <td class="align-middle">
                             @Html.DisplayFor(modelItem => item.FullName)
                         </td>
-                        <td class="align-middle">
+                        <td class="align-middle text-truncate" style="max-width: 150px;">
                             @Html.DisplayFor(modelItem => item.Bio)
                         </td>
                         <td class="align-middle">
-                            <a class="btn btn-outline-primary">
+                            <a class="btn btn-outline-primary"
+                               asp-action=@nameof(eticket.Controllers.ActorsController.Edit)
+                               asp-route-id="@item.Id">
                                 <i class="bi bi-pencil-square">
                                     Edit
                                 </i>
                             </a> |
-                            <a class="btn btn-outline-info">
+                            <a class="btn btn-outline-info"
+                               asp-controller=@eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.ActorsController))
+                               asp-action=@nameof(eticket.Controllers.ActorsController.Details)
+                               asp-route-id="@item.Id">
                                 <i class="bi bi-eye">
                                     Details
                                 </i>
                             </a> |
-                            <a class="btn btn-danger text-white">
+                            <a class="btn btn-danger text-white"
+                               asp-action=@nameof(eticket.Controllers.ActorsController.Delete)
+                               asp-route-id="@item.Id">
                                 <i class="bi bi-trash">
                                     Delete
                                 </i>

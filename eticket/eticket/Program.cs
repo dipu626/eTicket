@@ -8,13 +8,15 @@ var builder = WebApplication.CreateBuilder(args);
 // DbContext configuration
 var connectionString = builder.Configuration["ConnectionStrings:DefaultConnectionString"];
 
-Debug.Print(connectionString);
+Console.WriteLine(connectionString);
 
 // DBContext configuration
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
 // Service Configuration
 builder.Services.AddScoped<IActorsService, ActorsService>();
+builder.Services.AddScoped<IProducerService, ProducerService>();
+builder.Services.AddScoped<ICinemasService, CinemaService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -41,7 +43,7 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 // Seed Database
-AppDbInitializer.Delete(app);
+//AppDbInitializer.Delete(app);
 AppDbInitializer.Seed(app);
 
 app.Run();

@@ -28,18 +28,27 @@
                         <td class="align-middle">
                             @Html.DisplayFor(modelItem => item.Description)
                         </td>
-                        <td class="align-middle">
+                        <td class="align-middle"
+                            asp-controller=@eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.CinemasController))
+                            asp-action=@nameof(eticket.Controllers.CinemasController.Edit)
+                            asp-route-id="@item.Id">
                             <a class="btn btn-outline-primary">
                                 <i class="bi bi-pencil-square">
                                     Edit
                                 </i>
                             </a> |
-                            <a class="btn btn-outline-info">
+                            <a class="btn btn-outline-info"
+                               asp-controller=@eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.CinemasController))
+                               asp-action=@nameof(eticket.Controllers.CinemasController.Details)
+                               asp-route-id="@item.Id">
                                 <i class="bi bi-eye">
                                     Details
                                 </i>
                             </a> |
-                            <a class="btn btn-danger text-white">
+                            <a class="btn btn-danger text-white"
+                               asp-controller=@eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.CinemasController))
+                               asp-action=@nameof(eticket.Controllers.CinemasController.Delete)
+                               asp-route-id=@item.Id>
                                 <i class="bi bi-trash">
                                     Delete
                                 </i>
@@ -50,4 +59,12 @@
             </tbody>
         </table>
     </div>
+</div>
+
+<div style="position: fixed; right: 25px; bottom: 65px;" class="text-white">
+    <a asp-controller=@eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.CinemasController))
+       asp-action="Create"
+       class="btn btn-success">
+        <i class="bi bi-plus-circle"></i> Add New
+    </a>
 </div>

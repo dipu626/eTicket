@@ -1,20 +1,21 @@
 ﻿using eticket.Data;
+using eticket.Data.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eticket.Controllers
 {
     public class ProducersController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IProducerService _service;
 
-        public ProducersController(AppDbContext context)
+        public ProducersController(IProducerService producerService)
         {
-            _context = context;
+            _service = producerService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var allProducers = _context.Producers.ToList();
+            var allProducers = await _service.GetAllAsync();
             return View(allProducers);
         }
     }

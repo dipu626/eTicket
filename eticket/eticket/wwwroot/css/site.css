@@ -16,3 +16,9 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+* {
+    font-family: 'Exo 2', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}

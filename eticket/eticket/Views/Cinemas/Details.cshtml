@@ -1,0 +1,64 @@
+﻿@model Cinema
+@{
+    ViewData["Title"] = "Details Of Cinema";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <div class="text text-center">
+            <h3>Details for @Model.Name.ToUpper()</h3>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 offset-2">
+
+                <div class="form-group text-center">
+                    <img id="LogoPreview"
+                         src="@Model.Logo"
+                         class="border-info "
+                         style="max-width: 150px;" />
+                </div>
+
+                @*<div class="form-group">
+                        <label asp-for="ProfilePictureURL" class="control-label"></label>
+                        <input asp-for="ProfilePictureURL" class="form-control" />
+                        <span asp-validation-for="ProfilePictureURL" class="text-danger"></span>
+                    </div>*@
+
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" readonly />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    @*<input asp-for="Bio" class="form-control" readonly />*@
+                    <textarea asp-for="Description" class="form-control" rows="5" readonly></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mt-2">
+                    <a class="btn btn-outline-success float-end"
+                       asp-action=@nameof(eticket.Controllers.CinemasController.Edit)
+                       asp-route-id="@Model.Id">Edit</a>
+                    <a class="btn btn-outline-secondary"
+                       asp-action=@nameof(eticket.Controllers.CinemasController.Index)>
+                        Show All
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@*@section Scripts {
+        <script>
+
+            $(document).ready(function () {
+                var output = document.getElementById('LogoPreview');
+                output.src = $("#ProfilePictureURL").val();
+            })
+        </script>
+    }*@
