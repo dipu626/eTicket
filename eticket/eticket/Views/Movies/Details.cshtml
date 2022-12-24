@@ -6,9 +6,8 @@
 
 <div class="row">
     <div class="col-md-8 offset-2">
-        <div class="card mb-3" style="max-width: 540px;">
+        <div class="card mb-12">
             <div class="row g-0">
-
                 <div class="col-md-12">
                     <div class="card-header text-white bg-info">
                         <p class="card-text">
@@ -35,14 +34,14 @@
                             </a>
                         </p>
 
-                        @*<p class="card-text">
-                                <b>Cinema: </b>
-                                <a asp-controller=@eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.ProducersController))
-                                   asp-action=@nameof(eticket.Controllers.ProducersController.Details)
-                                   asp-route-id="@Model.Producer.Id">
-                                    @Html.DisplayFor(modelItem => Model.Producer.FullName)
-                                </a>
-                            </p>*@
+                        <p class="card-text">
+                            <b>Producer: </b>
+                            <a asp-controller=@eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.ProducersController))
+                               asp-action=@nameof(eticket.Controllers.ProducersController.Details)
+                               asp-route-id="@Model.Producer.Id">
+                                @Html.DisplayFor(modelitem => Model.Producer.FullName)
+                            </a>
+                        </p>
 
                         <p class="card-text"><b>Category: </b>@Html.DisplayFor(modelItem => Model.MovieCategory)</p>
                         <p class="card-text"><b>Start Date: </b>@Model.StartDate.ToString("dd MMM yy")</p>
@@ -69,12 +68,16 @@
                             <div class="row">
                                 @foreach (var actor in Model.Actors_Movies)
                                 {
-                                    <div class="flex-column text-center">
+                                    <div class="col text-center">
                                         <img class="border-info"
-                                             src="@actor.Actor.ProfilePictureURL" 
-                                             style="max-width: 150px;"/>
+                                             src="@actor.Actor.ProfilePictureURL"
+                                             style="max-width: 120px;" />
                                         <br />
-                                        <a>@actor.Actor.FullName</a>
+                                        <a asp-controller="@eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.ActorsController))"
+                                           asp-action="@nameof(eticket.Controllers.ActorsController.Details)"
+                                           asp-route-id="@actor.Actor.Id">
+                                            @actor.Actor.FullName
+                                        </a>
                                     </div>
                                 }
                             </div>
@@ -88,9 +91,9 @@
                         <p class="card-text">
                             <a class="btn btn-success text-white"><i class="bi bi-cart-plus"></i> Add to Card (Price @Model.Price.ToString("c")</a>
                             <a class="btn btn-outline-primary float-end"
-                               asp-action="Details"
+                               asp-action="Index"
                                asp-route-id="@Model.Id">
-                                <i class="bi bi-eye-fill"></i> Show Details
+                                Back to List
                             </a>
                         </p>
                     </div>
