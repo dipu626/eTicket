@@ -1,7 +1,6 @@
-﻿using eticket.Data;
-using eticket.Data.Services;
+﻿using eticket.Data.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace eticket.Controllers
 {
@@ -26,6 +25,18 @@ namespace eticket.Controllers
         {
             var movieDetails = await _moviesService.GetMovieByIdAsync(id);
             return View(movieDetails);
+        }
+
+        //Get: Movies/Create
+        public async Task<IActionResult> Create()
+        {
+            var movieDropdownItems = await _moviesService.GetNewMovieDropdownValues();
+
+            ViewBag.Cinemas = new SelectList(movieDropdownItems.Cinemas, "Id", "Name");
+            ViewBag.Producers = new SelectList(movieDropdownItems.Producers, "Id", "FullName");
+            ViewBag.Actors = new SelectList(movieDropdownItems.Actors, "Id", "FullName");
+
+            return View();
         }
     }
 }
