@@ -75,7 +75,10 @@
 
                     </ul>
 
-                    <form class="form-check-inline my-2 my-lg-0" asp-controller=@eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.MoviesController)) asp-action="@nameof(eticket.Controllers.CinemasController.Filter)" style="display: -webkit-inline-box; padding-right: 25px;">
+                    <form class="form-check-inline my-2 my-lg-0" 
+                          asp-controller=@eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.MoviesController)) 
+                          asp-action="@nameof(eticket.Controllers.MoviesController.Filter)" 
+                          style="display: -webkit-inline-box; padding-right: 25px;">
                         <input name="searchString" type="text" class="form-control" placeholder="Search for a movie..." />
                         <button class="btn btn-outline-light my-2 my-sm-0 m-1" type="submit"><i class="bi bi-search"></i></button>
                     </form>

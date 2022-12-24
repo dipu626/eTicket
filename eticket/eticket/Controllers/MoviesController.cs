@@ -88,6 +88,19 @@ namespace eticket.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<IActionResult> Filter(string searchString)
+        {
+            var movies = await _moviesService.GetAllAsync(n => n.Cinema);
+
+            if (movies != null && !string.IsNullOrEmpty(searchString))
+            {
+                var filterdMovies = movies.Where(n => n.Name.Contains(searchString) || n.Description.Contains(searchString)).ToList();
+                return View(nameof(Index), filterdMovies);
+            }
+
+            return View(nameof(Index), movies);
+        }
+
         #region Helper Methods
 
         private async Task SetDataIntoViewBagAsync()
