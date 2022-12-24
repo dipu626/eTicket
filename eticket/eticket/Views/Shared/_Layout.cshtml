@@ -19,7 +19,8 @@
                        asp-area=""
                        asp-controller=@eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.MoviesController))
                        asp-action="@nameof(eticket.Controllers.MoviesController.Index)">
-                        eTicket
+                        @*eTicket*@
+                        <img src="https://cdn3.ticketnew.com/tn/tn_logo/tn-logo-01.svg" width="124" alt="eTicket" />
                     </a>
                 </div>
                 <button class="navbar-toggler"
@@ -43,7 +44,7 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="bi bi-gear"></i> Management
                             </a>
 

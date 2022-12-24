@@ -1,24 +1,24 @@
 html {
-  font-size: 14px;
+    font-size: 13px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 12px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
 
 * {
-    font-family: 'Exo 2', sans-serif;
+    font-family: 'Cascadia Code', sans-serif;
     font-style: normal;
     font-weight: 400;
 }

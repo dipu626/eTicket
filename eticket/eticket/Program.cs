@@ -44,6 +44,6 @@ app.MapControllerRoute(
 
 // Seed Database
 //AppDbInitializer.Delete(app);
-AppDbInitializer.Seed(app);
+//AppDbInitializer.Seed(app);
 
 app.Run();

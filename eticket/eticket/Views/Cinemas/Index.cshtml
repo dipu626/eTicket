@@ -5,7 +5,7 @@
 }
 
 <div class="row">
-    <div class="col-md-8 offset-md-2">
+    <div class="col-md-10 offset-md-1">
         <table class="table">
             <thead>
                 <tr class="text-center">
@@ -20,19 +20,25 @@
                 {
                     <tr>
                         <td class="align-middle">
-                            <img class="rounded-circle" src="@item.Logo" alt="@item.Name" style="max-width:150px" />
+                            <img class="img-thumbnail" src="@item.Logo" alt="@item.Name" style="width: 150px; height: 200px;" />
                         </td>
                         <td class="align-middle">
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
                         <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.Description)
+                            <div class="form-group green-border-focus">
+                                @*<label for="exampleFormControlTextarea5">Colorful border on :focus state</label>*@
+                                <textarea class="form-control"
+                                          id="exampleFormControlTextarea5"
+                                          rows="6"
+                                          style="height: auto; width: 480px;">@Html.DisplayFor(modelItem => item.Description)</textarea>
+                            </div>
                         </td>
-                        <td class="align-middle"
-                            asp-controller=@eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.CinemasController))
-                            asp-action=@nameof(eticket.Controllers.CinemasController.Edit)
-                            asp-route-id="@item.Id">
-                            <a class="btn btn-outline-primary">
+                        <td class="align-middle">
+                            <a class="btn btn-outline-primary"
+                               asp-controller=@eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.CinemasController))
+                               asp-action=@nameof(eticket.Controllers.CinemasController.Edit)
+                               asp-route-id="@item.Id">
                                 <i class="bi bi-pencil-square">
                                     Edit
                                 </i>
