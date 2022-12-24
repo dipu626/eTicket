@@ -60,3 +60,5 @@
         </table>
     </div>
 </div>
+
+@await Html.PartialAsync("_CreateItem", eticket.Helper.ControllerHelper.GetControllerName(typeof(eticket.Controllers.ProducersController)))
