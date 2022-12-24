@@ -47,6 +47,47 @@ namespace eticket.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        //GET: Movies/Edit/Id
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var movieDetails = await _moviesService.GetByIdAsync(id);
+            if (movieDetails == null) return View("NotFound");
+
+            var response = new NewMovieVM
+            {
+                Id = movieDetails.Id,
+                Name = movieDetails.Name,
+                Description = movieDetails.Description,
+                Price = movieDetails.Price,
+                ImageURL = movieDetails.ImageURL,
+                MovieCategory = movieDetails.MovieCategory,
+                CinemaId = movieDetails.CinemaId,
+                ProducerId = movieDetails.ProducerId,
+                ActorIds = movieDetails.Actors_Movies?.Select(n => n.ActorId).ToList()
+            };
+
+            await SetDataIntoViewBagAsync();
+
+            return View(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, NewMovieVM movie)
+        {
+            if (id != movie.Id)
+            {
+                return View("NotFound");
+            }
+            if (ModelState.IsValid == false)
+            {
+                await SetDataIntoViewBagAsync();
+                return View(movie);
+            }
+            await _moviesService.UpdateMovieAsync(movie);
+            return RedirectToAction(nameof(Index));
+        }
+
         #region Helper Methods
 
         private async Task SetDataIntoViewBagAsync()
