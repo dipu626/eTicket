@@ -1,0 +1,55 @@
+﻿@model Producer
+@{
+    ViewData["Title"] = "Delete Of Producer";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <div class="text text-center">
+            <h3>Delete @Model.FullName.ToUpper()</h3>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 offset-2">
+
+                <div class="form-group text-center">
+                    <img id="ProfilePicturePreview"
+                         src="@Model.ProfilePictureURL"
+                         class="border-info"
+                         style="max-width: 150px;" />
+                </div>
+
+                @*<div class="form-group">
+                        <label asp-for="ProfilePictureURL" class="control-label"></label>
+                        <input asp-for="ProfilePictureURL" class="form-control" />
+                        <span asp-validation-for="ProfilePictureURL" class="text-danger"></span>
+                    </div>*@
+
+                <div class="form-group">
+                    <label asp-for="FullName" class="control-label"></label>
+                    <input asp-for="FullName" class="form-control" readonly />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Bio" class="control-label"></label>
+                    <input asp-for="Bio" class="form-control" readonly />
+                    <span asp-validation-for="Bio" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mt-2">
+                    <form asp-action="Delete"
+                          method="post">
+                        <input type="hidden" asp-for="Id" />
+                        <input type="submit" value="Confirm" class="btn btn-danger float-end" />
+                    </form>
+                    <a class="btn btn-outline-secondary"
+                       asp-action=@nameof(eticket.Controllers.ProducersController.Index)>
+                        Show All
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
