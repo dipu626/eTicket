@@ -1,7 +1,6 @@
 using eticket.Data;
 using eticket.Data.Services;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +16,7 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(conn
 builder.Services.AddScoped<IActorsService, ActorsService>();
 builder.Services.AddScoped<IProducerService, ProducerService>();
 builder.Services.AddScoped<ICinemasService, CinemaService>();
+builder.Services.AddScoped<IMoviesService, MoviesService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
