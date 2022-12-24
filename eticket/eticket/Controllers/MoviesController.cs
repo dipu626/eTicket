@@ -1,4 +1,5 @@
 ﻿using eticket.Data.Services;
+using eticket.Data.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -30,13 +31,33 @@ namespace eticket.Controllers
         //Get: Movies/Create
         public async Task<IActionResult> Create()
         {
+            await SetDataIntoViewBagAsync();
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(NewMovieVM movie)
+        {
+            if (ModelState.IsValid == false)
+            {
+                await SetDataIntoViewBagAsync();
+                return View(movie);
+            }
+            await _moviesService.AddNewMovieAsync(movie);
+            return RedirectToAction(nameof(Index));
+        }
+
+        #region Helper Methods
+
+        private async Task SetDataIntoViewBagAsync()
+        {
             var movieDropdownItems = await _moviesService.GetNewMovieDropdownValues();
 
             ViewBag.Cinemas = new SelectList(movieDropdownItems.Cinemas, "Id", "Name");
             ViewBag.Producers = new SelectList(movieDropdownItems.Producers, "Id", "FullName");
             ViewBag.Actors = new SelectList(movieDropdownItems.Actors, "Id", "FullName");
-
-            return View();
         }
+
+        #endregion
     }
 }

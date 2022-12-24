@@ -89,14 +89,14 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label asp-for="Description" class="control-label"></label>
-                                <textarea asp-for="CinemaId" class="form-control"></textarea>
-                                <span asp-validation-for="CinemaId" class="text-danger"></span>
+                                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
                             </div>
                         </div>
 
                     </div>
 
-                    <div class="col-md-4 offset-4 text-center">
+                    <div class="col-md-4 offset-4 text-center mt-2">
                         <img width="100" id="ImageURLPreview" />
                     </div>
 
@@ -115,8 +115,14 @@
 
 </div>
 
-@section Scripts{ 
+@section Scripts{
     <script>
+
+        $(document).ready(function () {
+            var output = document.getElementById('ImageURLPreview');
+            output.src = $("#ImageURL").val();
+        })
+
         $("#ImageURL").on("change", function () {
             var output = document.getElementById("ImageURLPreview");
             output.src = $(this).val();
