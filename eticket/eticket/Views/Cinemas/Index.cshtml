@@ -18,20 +18,19 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
+                    <tr class="text-center">
                         <td class="align-middle">
                             <img class="img-thumbnail" src="@item.Logo" alt="@item.Name" style="width: 150px; height: 200px;" />
                         </td>
                         <td class="align-middle">
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
-                        <td class="align-middle">
+                        <td class="text-center align-middle">
                             <div class="form-group green-border-focus">
                                 @*<label for="exampleFormControlTextarea5">Colorful border on :focus state</label>*@
                                 <textarea class="form-control"
                                           id="exampleFormControlTextarea5"
-                                          rows="6"
-                                          style="height: auto; width: 480px;">@Html.DisplayFor(modelItem => item.Description)</textarea>
+                                          rows="3">@Html.DisplayFor(modelItem => item.Description)</textarea>
                             </div>
                         </td>
                         <td class="align-middle">

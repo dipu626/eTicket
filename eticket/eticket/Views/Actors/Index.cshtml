@@ -20,14 +20,14 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
+                    <tr class="text-center">
                         <td class="align-middle">
-                            <img class="bg-info rounded-circle"
+                            <img class="bg-info "
                                  src="@item.ProfilePictureURL"
                                  alt="@item.FullName"
                                  style="max-width: 150px" />
                         </td>
-                        <td class="align-middle">
+                        <td class="align-middle text-truncate" style="max-width: 150px;">
                             @Html.DisplayFor(modelItem => item.FullName)
                         </td>
                         <td class="align-middle text-truncate" style="max-width: 150px;">

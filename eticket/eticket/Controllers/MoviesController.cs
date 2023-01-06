@@ -64,7 +64,9 @@ namespace eticket.Controllers
                 MovieCategory = movieDetails.MovieCategory,
                 CinemaId = movieDetails.CinemaId,
                 ProducerId = movieDetails.ProducerId,
-                ActorIds = movieDetails.Actors_Movies?.Select(n => n.ActorId).ToList()
+                ActorIds = movieDetails.Actors_Movies?.Select(n => n.ActorId).ToList(),
+                StartDate = movieDetails.StartDate,
+                EndDate = movieDetails.EndDate,
             };
 
             await SetDataIntoViewBagAsync();

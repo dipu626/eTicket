@@ -18,14 +18,14 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
+                    <tr class="text-center">
                         <td class="align-middle">
-                            <img class="rounded-circle" src="@item.ProfilePictureURL" alt="@item.FullName" style="max-width:150px" />
+                            <img class="rounded-pill" src="@item.ProfilePictureURL" alt="@item.FullName" style="max-width:150px" />
                         </td>
                         <td class="align-middle">
                             @Html.DisplayFor(modelItem => item.FullName)
                         </td>
-                        <td class="align-middle">
+                        <td class="align-middle text-truncate">
                             @Html.DisplayFor(modelItem => item.Bio)
                         </td>
                         <td class="align-middle">

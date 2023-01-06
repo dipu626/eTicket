@@ -2,6 +2,8 @@
 using eticket.Data.Services;
 using eticket.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace eticket.Controllers
 {
@@ -18,6 +20,23 @@ namespace eticket.Controllers
         {
             var allProducers = await _producerService.GetAllAsync();
             return View(allProducers);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("ProfilePictureURL,FullName,Bio")] Producer producer)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(producer);
+            }
+            await _producerService.AddAsync(producer);
+            return RedirectToAction(nameof(ProducersController.Index));
         }
 
         //Get: Producers/Delete/Id
